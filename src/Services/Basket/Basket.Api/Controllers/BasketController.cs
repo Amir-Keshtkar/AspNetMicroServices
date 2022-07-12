@@ -18,7 +18,7 @@ namespace Basket.Api.Controllers
 
         [HttpGet("{username}", Name = "GetBasket")]
         [ProducesResponseType(typeof(ShoppingCart), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<ShoppingCart>> GetProduct(string userName)
+        public async Task<ActionResult<ShoppingCart>> GetBasket(string userName)
         {
             var basket = await _basketRepository.GetBasket(userName);
             return Ok(basket ?? new ShoppingCart(userName));
