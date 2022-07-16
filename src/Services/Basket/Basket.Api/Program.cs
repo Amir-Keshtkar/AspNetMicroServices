@@ -1,10 +1,16 @@
+using Basket.Api.GrpcServices;
 using Basket.Api.Repositories;
-using Microsoft.OpenApi.Models;
+using Discount.Grpc.Protos;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(options=>
+    options.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"])
+);
+builder.Services.AddScoped<DiscountGrpcService>();
 
 builder.Services.AddControllers();
 

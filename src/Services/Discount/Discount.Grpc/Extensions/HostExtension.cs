@@ -17,13 +17,13 @@ namespace Discount.Grpc.Extensions {
                     using var command = new NpgsqlCommand {
                         Connection = connection,
                     };
-                    command.CommandText = "DROP TABLE IF EXISTS coupon";
+                    command.CommandText = "DROP TABLE IF EXISTS Coupon";
                     command.ExecuteNonQuery();
 
                     command.CommandText = @"CREATE TABLE Coupon(Id SERIAL PRIMARY KEY, 
-                                                                                                              ProductName VARCHAR(24) NOT NULL,
-                                                                                                              Description TEXT, 
-                                                                                                              Amount INT)";
+                                                                ProductName VARCHAR(24) NOT NULL,
+                                                                Description TEXT,
+                                                                Amount INT)";
                     command.ExecuteNonQuery();
 
                     command.CommandText = "INSERT INTO Coupon(ProductName, Description, Amount) VALUES('IPhone X', 'Iphone Discount', 150) ";
