@@ -10,14 +10,12 @@ namespace Ordering.Application.Features.Commands.DeleteOrder
     public class DeleteOrderCommandHandler : IRequestHandler<DeleteOrderCommand>
     {
         private readonly IOrderRepository _orderRepository;
-        private readonly IMapper _mapper;
         private readonly ILogger<DeleteOrderCommand> _logger;
 
         public DeleteOrderCommandHandler(ILogger<DeleteOrderCommand> logger, IOrderRepository orderRepository, IMapper mapper)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _orderRepository = orderRepository ?? throw new ArgumentNullException(nameof(orderRepository));
-            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
         public async Task<Unit> Handle(DeleteOrderCommand request, CancellationToken cancellationToken)
         {
