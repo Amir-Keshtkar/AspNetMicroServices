@@ -1,8 +1,6 @@
-﻿using Ordering.Domain.Common;
-
-namespace Ordering.Domain.Entities
+﻿namespace Basket.Api.Entities
 {
-    public class Order : EntityBase
+    public class BasketCheckout
     {
         public string? UserName { get; set; }
         public decimal TotalPrice { get; set; }
