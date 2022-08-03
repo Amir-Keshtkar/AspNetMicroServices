@@ -3,7 +3,7 @@ using MongoDB.Driver;
 
 namespace Catalog.Api.Data {
     public class CatalogContextSead {
-        internal static void SeadData(IMongoCollection<Product> productCollection) {
+        public static void SeadData(IMongoCollection<Product> productCollection) {
             bool existProduct = productCollection.Find(x => true).Any();
             if(!existProduct) {
                 productCollection.InsertManyAsync(GetPreConfiguerdProducts());
